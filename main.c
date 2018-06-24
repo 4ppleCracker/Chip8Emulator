@@ -103,7 +103,12 @@ static int DrawScreen() {
     return 0;
 }
 
-int main() {
+int main(int argc, char** argv) {
+    
+    if(argc != 2) {
+        printf("Usage: Chip8Emulator MyProgram.ch8\n");
+        exit(-1);
+    }
     
     InitSprites(Chip8.Memory);
     InitKeys(Chip8.Keys);
@@ -115,7 +120,7 @@ int main() {
     State_t state = { .state = STATE_OK };
     
     ssize_t romSize;
-    if(ReadRom(Chip8.Memory+0x200, &romSize) != romSize) {
+    if(ReadRom(argv[1], Chip8.Memory+0x200, &romSize) != romSize) {
         Exit(-1);
     }
     

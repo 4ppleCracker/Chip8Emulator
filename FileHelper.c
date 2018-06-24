@@ -15,8 +15,8 @@ ssize_t ReadFile(FILE* file, uint16_t* buffer, ssize_t size) {
     return fread(buffer, sizeof(char), size, file);
 }
 
-int ReadRom(uint8_t* RomTarget, ssize_t* romSize) {
-    FILE* rom = GetFile("Programs/Space Invaders.ch8");
+int ReadRom(char* RomName, uint8_t* RomTarget, ssize_t* romSize) {
+    FILE* rom = GetFile(RomName);
     
     *romSize = GetFileSize(rom);
     
